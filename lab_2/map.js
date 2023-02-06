@@ -11,5 +11,5 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 
 L.marker([45.68188552665935, -111.05834307811382])
     .addTo(mymap)
-    .bindPopup("<b>Hello!</b><br>I am Bozeman,Montana.")
+    .bindPopup("<b>Hello!</b><br>I am Bozeman, Montana.")
     .openPopup();
