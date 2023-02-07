@@ -7,6 +7,7 @@
 <p id="demo"></p>
 <p id="demo1"></p>
 <p id="demo2"></p>
+<p id="demo3"></p>
 
 <script>
     var num = "";
@@ -18,8 +19,8 @@
     
     var num_brk = "";
     
-    for (var z = 4; z < 6; z++) {
-        if(z===5) {break;}
+    for (var z = 4; z < 15; z++) {
+        if(z===14) {break;}
         num_brk += "The number is " + z + " lets loop again" + "<br>";
     }
     document.getElementById("demo1").innerHTML = num_brk;
@@ -33,7 +34,15 @@
         carnames += cars[j] + "<br>";
     }
     document.getElementById("demo2").innerHTML = carnames;
-
+    
+    const trees = ["Pine", "Oak", "Spruce", "Maple"];
+    
+    var treenames = "";
+    
+    for (var t = 0; t < trees.length; t++) {
+        treenames += trees[t] + "<br>";
+    }
+    document.getElementById("demo3").innerHTML = treenames;
 </script>
 
 
