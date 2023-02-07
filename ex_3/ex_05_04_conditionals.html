@@ -7,6 +7,7 @@
     <p id="happy day"></p>
     <p id="good_night"></p>
     <p id="good_all"></p>
+    <p id="meal"></p>
 
 
 
@@ -32,12 +33,19 @@
         } else if (hour <18){
             greeting = "Good Afternoon!";
         } else {
-            greeting = "Good morrow!";
+            greeting = "Good night!";
         }
         document.getElementById("good_all").innerHTML = greeting;
         
+        if (hour < 12) {
+            greeting = "I hope you had a good breakfast!";
+        } else if (hour <18){
+            greeting = "I hope you had a good lunch!";
+        } else {
+            greeting = "Have a good dinner!";
+        }
         
-
+        document.getElementById("meal").innerHTML = greeting;
     
 
     </script>
