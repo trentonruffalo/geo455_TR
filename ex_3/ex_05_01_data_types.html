@@ -7,7 +7,9 @@
     <p>In JavaScript the = operator is used to assign values to variables.</p>
 
     <p id="add"></p>
+    <p id="add1"></p>
     <p id="sub"></p>
+    <p id="sub2"></p>
     <p id="mult1"></p>
     <p id="mult2"></p>
     <p id="incree"></p>
@@ -21,9 +23,10 @@
         var y = 4;
         document.getElementById("add").innerHTML = x + x;
         document.getElementById("sub").innerHTML = y - y;
+        document.getElementById("sub2").innerHTML = x - y;
         document.getElementById("mult1").innerHTML = x * y;
         document.getElementById("mult2").innerHTML = x * 10;
-        document.getElementById("add").innerHTML = x + 12;
+        document.getElementById("add1").innerHTML = x + 12;
         
         var z = 11
         z++;
@@ -39,10 +42,12 @@
         var list = "<ul>";
         list += "<li>Apples</li>";
         list += "<li>Oranges</li>";
+         list += "<li>Milk</li>";
+         list += "<li>Cheerios</li>";
         list += "</ul>";
         document.getElementById("list").innerHTML = list; // returns all values in the list
 
-        document.getElementById("bool").innerHTML = 6 > 9;
+        document.getElementById("bool").innerHTML = 5 == 5;
     </script>
 
 </body>
