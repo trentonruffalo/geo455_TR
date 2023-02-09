@@ -4,89 +4,108 @@
        <title>geo455_lab2</title>
         <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-
-        xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
-        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-
-        XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+        <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
         <style>
-            body {
-                margin: 0;
-                padding: 0;
+            #container {
+                height: relative;
+                width: relative;
+                margin-top: auto;
+                margin-right: auto;
+                margin-bottom: auto;
+                margin-left: auto;
                 background-color: "whitesmoke";
                 font-family: "Noto Sans", sans-serif;
                 color: #3d3d3d;
             }
-            #title {
-                position: center;
-                margin-top: 0;
+
+            #container #title {
+                font-size: 1.5em;
+                font-family:'Open Sans', sans-serif; ;
+                letter-spacing: .04em;
+                padding: 5px 5px;
+                background-color: white;
+                border: 1px solid black;
+                border-radius: 5px;
+                text-align: center;
+                }
+
+             #container #leftsidebar {
+                position: static;
+                width: 250px;
                 top: 10px;
-                left: 50px;
-                font-size: 2em;
-                font-family: "Lora", serif;
+                left: 30px;
+                padding: 5px 5px;
+                float: left;
+                height: 750px;
+                margin: 0px;
+                font-size: 1em;
+                font-family: 'Open Sans', sans-serif;
                 letter-spacing: .04em;
-                padding: 10px 15px;
-                background-color: rgba(255, 255, 255, 0.5);
-                border: 1px solid grey;
-                border-radius: 3px;
-                z-index: 800;
+                background-color: white;
+                border: 1px solid black;
+                border-radius: 12px;
             }
-            #description h2 {
-                font-family: "Lora", serif;
-                letter-spacing: .04em;
-            }
-            #map {
+           
+            #container #map {
                 position: absolute;
-                top: 0;
-                bottom: 0;
-                width: 100%;
+               top: 65px;
+                right: 10px;
+                left: 325px;
+                bottom: 125px;
+                width: relative;
             }
-            #description {
-                position:left;
-                bottom: 50px;
-                left: 10px;
-                width: 280px;
-                padding: 0px 15px;
-                background-color: rgba(255, 255, 255, 0.7);
-                border: 1px solid grey;
-                border-radius: 3px;
-                z-index: 800;
-            }
-            #description p {
-                font-size: .9em;
-                line-height: 1.5em;
-            }
-            #description a {
-                color: #005daa;
-                text-decoration: none;
-            }
-            #description a:hover {
-                text-decoration: underline;
-            }
-            footer{ 
-                position: bottom;
-                margin-top: 0;
-                top: 10px;
-                left: 50px;
-                font-size: 2em;
-                font-family: "Lora", serif;
+            #container #footer {
+                position: absolute;
+                width: 1890px;
+                top: 850px;
+                left:0px;
+                padding: 5px 5px;
+                height: 50px;
+                margin: 10px;
+                font-size: 1em;
+                font-family: 'Open Sans', sans-serif;
                 letter-spacing: .04em;
-                padding: 10px 15px;
-                background-color: rgba(255, 255, 255, 0.5);
-                border: 1px solid grey;
-                border-radius: 3px;
-                z-index: 800;
+                background-color: white;
+                border: 1px solid black;
+                border-radius: 10px;
+                text-align: center
             }
+            
+           
+            
+            
+          
         </style>
     </head>
     <body>
-        <h1 id="title">Lab 2</h1>
-        <div id="map"></div>
-        <div id="description">
-            <h2>About this assignment</h2>
-            <p>This is the final result of the <a href="https://leafletjs.com/examples/quick-start/" target="_blank">Leaflet Quick Start Guide</a>. The map demonstrates Leaflet basics, such as setting up a Leaflet map, adding markers, and popups.</p>
-            <p>The placement and styling of the title and description boxes is done using CSS. Check out the source code of this page to see how.</p>
-           <p>Map authored by Sophie Bouzek</p>
+
+        <div id="container">
+            <h1 id="title">Lab 3: The Upper Peninsula </h1>
+            <div id="map"> </div>
+            <div id="leftsidebar">
+                <h2> Towns and Attractions in the U.P.</h2>
+                <ol>
+                    <li> Mackinac Island </li>
+                    <li> Pictured Rocks </li>
+                    <li> Presque Isle </li>
+                    <li> Marquette</li>
+                    <li> Sault Ste. Marie</li>
+                    <li> Copper Harbor</li>
+                    <li> Escanaba</li>
+                    <li> Iron Mountain</li>
+                    <li> L'Anse</li>
+                    <li> St. Ignace</li>
+                    <li> Manistique</li>
+                    <li> Ontonagon</li>
+                </ol> 
+            <img src="images/lakesuperior.jpg" align= "center" width="200" height="200">
+                <p> <i> Photo credits: Wikipedia</i></p>
+            </div>
+    <div id="footer">
+                <h3> footer</h3>
+                </div>
         </div>
-        <script src="map.js"></script>
+        <script src="map_lab3.js"></script>
     </body>
 </html>
