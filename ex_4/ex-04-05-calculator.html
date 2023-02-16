@@ -25,12 +25,12 @@
         <p>Fourth number: <input type="number" id="num4" min="0" max="100" value=""></p>
         
         <input type="button" id="divide" value="Divide!">
-        <p id="result"></p>
+        <p id="result2"></p>
         
         <script>
             var num3 = document.getElementById("num3");
             var num4 = document.getElementById("num4");
-            var result = document.getElementById("result");
+            var result = document.getElementById("result2");
             
             document.getElementById("divide").addEventListener("click", function() {
                 result.innerHTML = "The result is: " + num3.value / num4.value;
