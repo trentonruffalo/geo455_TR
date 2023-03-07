@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
-    <script src="county2.js"></script>
+    <script src="towns.geojson"></script>
     <style>
         body {
             padding: 0;
@@ -21,7 +21,7 @@
     <div id="map"></div>
     <script>
 
-let map = L.map("map").setView([39, -100], 5);
+let map = L.map("map").setView([32, 35], 8);
 
 L.tileLayer("https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_nolabels/{z}/{x}/{y}.png", {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attribution/">CartoDB</a>',
@@ -30,7 +30,7 @@ L.tileLayer("https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_nolabels/{
 }).addTo(map);
 
 // Load GeoJSON from an external file
-L.geoJSON(county).addTo(map);
+L.geoJSON(towns).addTo(map);
     </script>
 </body>
 </html>
