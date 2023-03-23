@@ -11,8 +11,7 @@ var mymap = L.map('map', {
 	maxZoom: 20,
 	ext: 'png',
 }).addTo(mymap);         
-
-//Map 1
+  
 function getColor(value) {
     return value > 139 ? '#54278f':
            value > 87  ? '#756bb1':
@@ -107,15 +106,15 @@ legend.addTo(mymap);
 
 function getColor1(value1) {
     return value1 > 47 ? '#780202':
-           value1 > 30 ? '#8f2701':
-           value1 > 17 ? '#bd3d02':
-           value1 > 11 ? '#e08f31':
-                        '#f7d09c';
+           value1 > 30  ? '#8f2701':
+           value1 > 17  ? '#bd3d02':
+           value1 > 11  ? '#e08f31':
+                         '#f7d09c';
 }
 
-function style1(feature){
+function style1(feature1){
     return {
-        fillColor: getColor1(feature.properties.dens_all),   
+        fillColor: getColor1(feature1.properties.dens_all),   
         weight: 2,
         opacity: 1,
         color: 'gray',
@@ -124,45 +123,41 @@ function style1(feature){
 }
 
 function highlightFeature1(e1) {
-    // Get access to the feature that was hovered through e.target
-    var feature = e1.target;
+    var feature1 = e1.target;
 
-    // Set a thick grey border on the feature as mouseover effect
-    // Adjust the values below to change the highlighting styles of features on mouseover
-    // Check out https://leafletjs.com/reference-1.3.4.html#path for more options for changing style
     feature.setStyle({
         weight: 5,
         color: '#666',
         fillOpacity: 0.7
     });
 
-    // Bring the highlighted feature to front so that the border doesn’t clash with nearby states
-    // But not for IE, Opera or Edge, since they have problems doing bringToFront on mouseover
     if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
-        feature.bringToFront();
+        feature1.bringToFront();
     }
 }
 
-function onEachFeature1(feature, layer) {
+function onEachFeature1(feature1, layer) {
     layer.on({
         mouseover: highlightFeature1, // Do what defined by the highlightFeature function on mouseover
         mouseout: resetHighlight1,    // Do what defined by the resetHighlight function on mouseout
     });
 }
 
-var geojson1; // define a variable to make the geojson layer accessible for the function to use   
+var density1; // define a variable to make the geojson layer accessible for the function to use   
             
 function resetHighlight1(e1) {
-    geojson1.resetStyle(e1.target);
+    density1.resetStyle(e1.target);
 }
 
-geojson1 = L.geoJson(density, {
+
+density1 = L.geoJson(density1, {
     style:style1,
     onEachFeature: onEachFeature1
 }).bindPopup(function (layer){
     return layer.feature.properties.NAME 
-           + '<p style="color:purple">' + layer.feature.properties.dens_all.toString() + ' people/hectare </p>';       
+           + '<p style="color:orange">' + layer.feature.properties.dens_all.toString() + ' people/hectare </p>';       
 }).addTo(mymap);
+
 var legend1 = L.control({position: 'topleft'});
 
 legend1.onAdd = function (mymap) {
@@ -216,8 +211,8 @@ var baseLayers = {
 
 var overlays = {
     'Population Denisty': geojson,
-    'Language': geojson1
+    'Language': density1,
                };
 
 //Create the menu
- var layerControl = L.control.layers(baseLayers, overlays, {collapsed: false}).addTo(mymap);
+ var layerControl = L.control.layers(baseLayers, overlays, {collapsed: true}).addTo(mymap);
