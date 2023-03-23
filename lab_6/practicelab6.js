@@ -221,3 +221,4 @@ var overlays = {
 
 //Create the menu
  var layerControl = L.control.layers(baseLayers, overlays, {collapsed: false}).addTo(mymap);
+ 
