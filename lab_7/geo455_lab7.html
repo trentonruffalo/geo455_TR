@@ -1,81 +1,70 @@
 <!DOCTYPE html>
 <html>
     <head>
-       <title>geo455_lab7</title>
-        <script src="./mtn_peaks.js"></script>
-        <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
-        <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+        <title>geo455_lab7</title>
+        <!--- fonts package--->
+        <link href="https://fonts.googleapis.com/css2?family=Catamaran&display=swap" rel="stylesheet">
+        <!--- leaflet package --->
+         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+        <!--- searchbox package -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-search/3.0.9/leaflet-search.min.css" integrity="sha512-1TnOnmQ91QV8X1/dj6UMPhRM35nAnBanyvXPFU7uqV3xg+++cGxIBR6Bh5D7F8wVrwNm8eAfBWNYX/4yce4CiQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-search/3.0.9/leaflet-search.min.js" integrity="sha512-erNK0f3PSiL/SdS247MoOAK95iJCmfueXT4WG5eyRBR1eOgcE0bI5y2fSEVTQfAS53pTqL/VIQpJXnG99U1n+A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> 
+        <!--- locator map package --->
+        <link href='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-minimap/v1.0.0/Control.MiniMap.css' rel='stylesheet' />
+        <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-minimap/v1.0.0/Control.MiniMap.js'></script>
+        <!--- button package --->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.css">
+        <script src="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.js"></script>
+        <!--- cluster marker package --->
+        <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css">
+        <!--- heatmap package from local directory --->
+        <script src="./js/leaflet-heat.js"></script>
+        <!--- data from local directory --->
+        <script src="./js/mtn_peaks.js"></script>  
+        
         <style>
+            
             body {
-                margin: 0;
-                padding: 0;
-                background-color: "whitesmoke";
-                font-family: "Noto Sans", sans-serif;
-                color: #3d3d3d;
+                margin:0; 
+                padding:0; 
+                font-family: 'Catamaran';
+                font: sans-serif; 
             }
             #title {
                 position: fixed;
                 margin-top: 0;
                 top: 10px;
                 left: 50px;
-                font-size: 2em;
+                font-size: 1.5em;
                 font-family: "Lora", serif;
+                color: azure;
                 letter-spacing: .04em;
                 padding: 10px 15px;
-                background-color: rgba(255, 255, 255, 0.5);
+                background-color: rgba(0, 128, 128, 0.8);
                 border: 1px solid grey;
                 border-radius: 3px;
                 z-index: 800;
-            }
-            #description h2 {
-                font-family: "Lora", serif;
-                letter-spacing: .04em;
             }
             #map {
-                position: absolute;
-                top: 0;
-                bottom: 0;
-                width: 100%
+                position:absolute; 
+                top:0; 
+                bottom:0; 
+                width:100%; 
+                height: 100%; 
             }
-            .custom .leaflet-popup-tip,
-            .custom .leaflet-popup-content-wrapper {
-                background: #000000;
-                color: #ffffff;
-            }
-            #description {
-                position: fixed;
-                bottom: 20px;
-                right: 10px;
-                width: 300px;
-                padding: 0px 15px;
-                background-color: rgba(255, 255, 255, 0.7);
-                border: 1px solid grey;
-                border-radius: 3px;
-                z-index: 800;
-            }
-            #description p {
-                font-size: .9em;
-                line-height: 1.5em;
-            }
-            #description a {
-                color: #005daa;
-                text-decoration: none;
-            }
-            #description a:hover {
-                text-decoration: underline;
+            p {
+                font-family: 'Catamaran'; 
+                font: sans-serif;  
+                font-size: 1.25em;
             }
         </style>
     </head>
+    
     <body>
-        <h1 id="title">Lab 7: Mapping Expeditions and Fatalities in the Himalayas (1950-2023)</h1>
-        <div id="map"></div>
-        <div id="description">
-            <h2>About this assignment</h2>
-           <p>In this assignment, we are working with layer controls. We have three layers, landmarks, basemap, and SRTM 30m hillshade map using WMS service. Landmarks are based on encyclopedia Britannica's entry on <a href="https://www.britannica.com/list/new-seven-wonders-of-the-world">New Seven Wonders of the World</a> and the images are linked from Wikipedia Common images</p>
-<p>Map authored by Trenton Ruffalo </p>
-        </div>
-        <script src="map_lab7.js"></script>
+        <div id='title'>Lab 7: Mapping Expeditions and Fatalities in the Himalayas (1950-2003)</div>
+        <div id='map'></div>
+            <script src="map_lab7.js"></script>
     </body>
 </html>
