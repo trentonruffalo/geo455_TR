@@ -12,6 +12,7 @@ $(document).ready(function() {
         $("#splasher2").fadeOut();
     });
 });
+
 var mymap = L.map('map', {
     center: [38.85250119246977, -99.60815961021089],
               zoom: 4,
@@ -38,12 +39,14 @@ var cities = L.esri.featureLayer({
             });
           }
         }).addTo(mymap);
+
 cities.bindPopup(function (layer) {
         return L.Util.template(
           "<p><strong>{NAME}</strong>, {ST}</p>",
           layer.feature.properties
         );
       });
+
 var wildfireRisk = L.esri.dynamicMapLayer({
     url: 'https://maps7.arcgisonline.com/arcgis/rest/services/USDA_USFS_2014_Wildfire_Hazard_Potential/MapServer',
     // server response content type can be either 'json' (default) or 'image'
@@ -58,3 +61,14 @@ wildfireRisk.bindPopup(function (error, featureCollection) {
     }
   });
 
+
+
+var overlays = {
+    'Widlfire':wildfireRisk,
+    "<img src='img/icon.png' height=20> Major Cities": cities};
+
+
+//Creating the menu
+var layerControl = L.control.layers({}, overlays, {collapsed: false}).addTo(mymap); //collapsed: true is defaults
+
+              
