@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
    <head>
        <title>geo455_lab8</title>
@@ -28,23 +27,24 @@
             crossorigin=""></script>
        
        <!---Load my script --->
-       <script src="map_lab8.js"></script>
+       <script src="my_script.js"></script>
 
-        
-        <style>
+       <style>
             #container {
                 height: relative;
                 width: relative;
                 margin-top: auto;
                 margin-right: auto;
                 margin-bottom: auto;
-                margin-left: auto;
-                background-color: "whitesmoke";
-                font-family: "Noto Sans", sans-serif;
-                color: #3d3d3d;
-            }
-
-             .button {
+                margin-left: auto;}
+           #header{
+               background-color: darkred;
+               padding: 5px;
+               font-family: "Roboto Serif", Helvetica, Corbel, Arial, sans-serif;
+               text-align: center;
+               color: aliceblue;
+           }
+           .button {
                background-color: #008CBA; /* Green */
                border: 1px solid white;
                color: white;
@@ -56,9 +56,25 @@
                display: block;
                width: 200px;
                height: 50px;
-            
-            }
-             #splasher1{
+           }
+           #container #leftmenu{
+                position: static;
+                width: 220px;
+                top: 10px;
+                left: 50px;
+                padding: 10px 15px;
+                float: left;
+                height: 780px;
+                margin: 0;
+                font-size: 1em;
+                font-family: "Lora", serif;
+                letter-spacing: .04em;
+                background-color: #912323;
+                border: 1px solid grey;
+                border-radius: 3px;
+               
+           }
+          #splasher1{
                background-color: white;
                padding: 2px;
                width: auto;
@@ -80,79 +96,48 @@
                top: 350px;
                display: block;
            }
-             #container #leftmenu {
-                position: static;
-                width: 250px;
-                top: 10px;
-                left: 30px;
-                padding: 5px 5px;
-                float: left;
-                height: 750px;
-                margin: 0px;
-                font-size: 1em;
-                font-family: 'Open Sans', sans-serif;
-                letter-spacing: .04em;
-                background-color: white;
-                border: 1px solid black;
-                border-radius: 12px;
-            }
-           
-            #container #map {
-                position: absolute;
-               top: 65px;
-                right: 10px;
-                left: 325px;
-                bottom: 125px;
-                width: relative;
-            }
-            #container #footer {
-                position: absolute;
-                width: 1890px;
-                top: 850px;
-                left:0px;
-                padding: 5px 5px;
-                height: 50px;
-                margin: 10px;
-                font-size: 1em;
-                font-family: 'Open Sans', sans-serif;
-                letter-spacing: .04em;
-                background-color: white;
-                border: 1px solid black;
-                border-radius: 10px;
-                text-align: center
-            }
+           #container #map{
+               height: 800px;
+               position: relative;
+           }
             
            
-            
-            
-          
-        </style>
+           html {
+               background-color: gray;
+           }
+           .hidden { 
+               display: none; 
+           }
+       </style>
     </head>
-    <body>
 
-        <div id="container">
-            <h1 id="title"> Lab 8 </h1>
-            <div id="map"> </div>
-             <div id="leftmenu">
+	
+   <body>
+       <div id= "container">
+       <div id = "header">
+       <h1> Lab 8: Mapping with ESRI leaflet and jQuery</h1> 
+       </div>
+      
+           <div id="leftmenu">
                <button id="btn1" class="button">Show Legend</button>
                <button id="btn2" class="button">Hide Legend</button>
                <button id="btn3" class="button">Show about map</button>
                <button id="btn4" class="button">Hide about map</button>
            </div>
-        <div id= "splasher1" class="hidden">
-            <h2>Legend</h2>
-            <img src="legend.jpg" width="175" height="300" align='center'><img>
+            <div id= "splasher1" class="hidden">
+                <h2>Legend</h2>
+                    <img src="img/legend.jpg" width="175" height="300" align='center'><img>
             </div>
             <div id= "splasher2" class="hidden">
-            <h3>About the map</h3>
-                <p>The data shows wildfire risk by USGS and location of populated cities. 
-                    Click on the city markers to check their names. 
-                    ESRI leaflet was used to display the datalayers.</p>
- </div>
-    <div id="footer">
-                <h3> Map developed by Trenton Ruffalo</h3>
-                </div>
-        </div>
-        <script src="map_lab8.js"></script>
-    </body>
+               <h3>About the map</h3>
+                <p>The data shows wildfire risk by USDA/USFS and location of populated cities by ESRI. Click on the Wildfire map to check the risk levels, and the city markers to check their names. ESRI leaflet was used to display the datalayers.</p>
+            </div>
+        <div id="map"></div>
+            <script src="map_lab8.js"></script>
+       </div>
+
+            
+       
+
+   </body>
 </html>
