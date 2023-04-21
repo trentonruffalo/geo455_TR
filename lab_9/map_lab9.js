@@ -1,28 +1,39 @@
-var mymap = L.map("map").setView([44.3870219, -89.6457912 ], 8);
+var mymap = L.map('map', {
+    center: [43.0186, -89.5498],
+    zoom: 8,
+});
 
-L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoicnVmZmFsbzAxNjMiLCJhIjoiY2xkdGZtY2x6MTBmajNvbzZ4MnlnMGZwdCJ9.h5ZouR4hbLVdckM9ayqkMg', {
-    maxZoom: 18,
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
-        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    id: 'mapbox/satellite-streets-v11',
-    tileSize: 512,
-    zoomOffset: -1
+var grayscale = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
+    attribution: 'Map tiles by Carto, under CC BY 3.0. Data by OpenStreetMap, under ODbL.',
+    maxZoom: 11,
+    minZoom: 2,
 }).addTo(mymap);
-var migrationLayer = new L.migrationLayer({
-            map: mymap,
-            data: data,
-            pulseRadius:30,
-            pulseBorderWidth:3,
-            arcWidth:1,
-            arcLabel:true,
-            arcLabelFont:'10px sans-serif',
-            maxWidth:10
-            }
-        );
-        migrationLayer.addTo(lrmap);
 
-       
-        function hide(){
+
+
+var migrationLayer = new L.migrationLayer({
+    map: mymap,
+    data: data,
+    pulseRadius:30,
+    pulseBorderWidth:3,
+    arcWidth:1,
+    arcLabel:true,
+    arcLabelFont:'10px sans-serif',
+    maxWidth:10,
+});
+
+migrationLayer.addTo(mymap);
+
+var counties = L.geojson(poly, {
+ style: function (feature) {
+        return {fillOpacity: 0.5, weight: 2, color: feature.properties.color};
+    },
+    onEachFeature: function(feature, featureLayer) {
+        featurelayer.bindTooltip(feature.properties.Name, {permanent:false, direction:'right'});
+    }
+}).addTo(mymap);
+
+ function hide(){
             migrationLayer.hide();
         }
         function show(){
@@ -34,4 +45,3 @@ var migrationLayer = new L.migrationLayer({
         function pause(){
             migrationLayer.pause();
         }
-       
